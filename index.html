@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>最终版轮播图</title>
+		<style type="text/css">
+			* {
+				box-sizing:border-box
+			}
+			/*字体样式*/
+			body {
+				font-family: Verdana,sans-serif;
+			}
+
+			/*整个轮播图的容器*/
+			.slide {
+				max-width: 800px;
+				position: relative;
+				margin: auto;
+				/*animation:move 10s ease 0s infinite normal;*/
+			}
+			/*图片默认隐藏*/
+			.images {
+				display: none;
+			}
+			/*左上角文本数字*/
+			.number {
+				color: #f2f2f2;
+				font-size: 12px;
+				padding: 8px 12px;
+				position: absolute;
+				top: 0px;
+			}
+			/*中下处文本*/
+			.text {
+				color: #f2f2f2;
+				font-size: 20px;
+				padding: 8px 12px;
+				position: absolute;
+				bottom: 8px;
+				width: 100%;
+				text-align: center;
+			}
+
+			/* 按钮--下一张 & 上一张 */
+			.prev, .next {
+				cursor: pointer;
+				position: absolute;
+				top: 50%;
+				width: auto;
+				margin-top: -22px;
+				padding: 16px;
+				color: white;
+				background-color: rgba(220,220,220,0.5);
+				font-size: 18px;
+				font-weight: bold;
+				transition: 0.6s ease;
+				border-radius: 0 3px 3px 0;
+			}
+			/*小圆点按钮*/
+			.dot {
+				cursor: pointer;
+				width: 13px;
+				height: 13px;
+				margin: 0 2px;
+				background-color: #bbb;
+				border-radius: 50px;
+				display: inline-block;
+				transition: background-color 0.6s ease;
+			}
+			
+			.next {
+				right: 0px;
+				border-radius: 3px 0 0 3px;
+			}
+			.active, .dot:hover {
+				background-color: #717171;
+			}
+			.prev:hover, .next:hover {
+				background-color: rgba(128,128,128,0.8);
+			}
+			/*图片动画属性*/
+			.fade {
+				animation-name: fade;
+				/*定义动画完成一个周期所需要的时间*/
+				animation-duration: 1.5s;
+			}
+			/*设置切换图片淡出动画效果*/
+			@keyframes fade {
+				from {
+					/*设置元素的不透明级别--1.0完全不透明*/
+					opacity: 0.6
+				}
+				to {
+					opacity: 1
+				}
+			}
+			/*@keyframes move {
+				0%{
+	                left:0px;
+	            }
+	            25%{
+	                left:-500px;
+	            }
+	            50%{
+	                left:-1000px;
+	            }
+	            75%{
+	                left:-1500px;
+	            }
+	            100%{
+	                left:-2000px;
+	            }
+			}*/
+		</style>
+	</head>
+	<body>
+		<div class="slide">
+			<div class="images fade">
+				<div class="number">1 / 4</div>
+				<img src="./11.jpg" style="width: 800px;height: 500px">
+				<div class="text">春色</div>
+			</div>
+			<div class="images fade">
+				<div class="number">2 / 4</div>
+				<img src="./12.jpg" style="width: 800px;height: 500px">
+				<div class="text">夏情</div>
+			</div>
+			<div class="images fade">
+				<div class="number">3 / 4</div>
+				<img src="./13.jpg" style="width: 800px;height: 500px">
+				<div class="text">秋韵</div>
+			</div>
+			<div class="images fade">
+				<div class="number">4 / 4</div>
+				<img src="./14.jpg" style="width: 800px;height: 500px">
+				<div class="text">冬盈</div>
+			</div>
+			<a class="prev" onclick="plusSlides(-1)">❮</a>
+		    <a class="next" onclick="plusSlides(1)">❯</a>
+		</div>
+		<br>
+
+		<div style="text-align:center">
+			<span class="dot" onclick="slides(1)"></span>
+			<span class="dot" onclick="slides(2)"></span>
+			<span class="dot" onclick="slides(3)"></span>
+			<span class="dot" onclick="slides(4)"></span>
+		</div>
+	</body>
+</html>
+<script type="text/javascript">
+	var s = 1;
+    showSlides(s);
+
+    function plusSlides(n) {
+      showSlides(s += n);
+    }
+
+    function slides(n) {
+      showSlides(s = n);
+    }
+
+    function showSlides(n) {
+      var i;
+      var slidess = document.getElementsByClassName("images");
+      var dots = document.getElementsByClassName("dot");
+      if (n > slidess.length) {
+        	s = 1
+    	} 
+      if (n < 1) {
+        	s = slidess.length
+    	}
+      for (i = 0; i < slidess.length; i++) {
+          	slidess[i].style.display = "none"; 
+      	}
+      for (i = 0; i < dots.length; i++) {
+          	dots[i].className = dots[i].className.replace(" active", "");
+      	}
+      slidess[s-1].style.display = "block"; 
+      dots[s-1].className += " active";
+    }
+</script>
