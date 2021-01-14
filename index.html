@@ -2,11 +2,13 @@
 	<html>
 	<head>
 		<title>内陆热播电影</title>
-		<script src="./vue.js"></script>
 		<link rel="stylesheet" type="text/css" href="./1.css">
+
 	</head>
 	<body>
 		<div  id="movies" >
+
+            <!-- ####   顶部导航栏  -->
 			<div class="title">
 				<div class="title1">
 					<div class="logo"><img src="logo.png"></div>
@@ -27,369 +29,599 @@
 			        </div>
 				</div>
 			</div>
-			<!-- <nav id="nav">
-				<ul>
-					<li class="act">爱情片</li>
-					<li>悬疑片</li>
-					<li>惊悚片</li>
-					<li>喜剧片</li>
-					<li>动作片</li>
-				</ul>
-			</nav> -->
+
+            <!-- ####   引用 Swiper 插件展示轮播图 -->
+            <div class="swiper-container">
+                <div class="swiper-wrapper">
+                  <div class="swiper-slide" style="background-image:url(./swiper/1.jpg)"></div>
+                  <div class="swiper-slide" style="background-image:url(./swiper/3.jpg)"></div>
+                  <div class="swiper-slide" style="background-image:url(./swiper/4.jpg)"></div>
+                  <div class="swiper-slide" style="background-image:url(./swiper/5.jpg)"></div>
+                  <div class="swiper-slide" style="background-image:url(./swiper/6.jpg)"></div>
+                  <div class="swiper-slide" style="background-image:url(./swiper/7.jpg)"></div>
+                  <div class="swiper-slide" style="background-image:url(./swiper/8.jpg)"></div>
+                </div>
+                <!-- Add Pagination -->
+                <div class="swiper-pagination"></div>
+            </div>
+
+
+            <!-- ####   电影分类栏--选项卡 -->
+            <div class="itemize">
+                <div id="nav">
+                    <div class="item">
+                        <img src="./logo3.png">
+                        <h3 href="#">电影分类:</h3>
+                    </div>
+                    <ul>
+                        <li id="nav1" class="act">爱情片</li>
+                        <li id="nav1">犯罪片</li>
+                        <li id="nav1">惊悚片</li>
+                        <li id="nav1">喜剧片</li>
+                        <li id="nav1">动作片</li>
+                    </ul>
+                    <a href="#" class="text-muted">更多&nbsp;&nbsp;❯</a>
+                </div>
+                <div id="container">
+                     <div class="tab">
+                        <div class="first">
+                            <div class="two" v-for="(item,index) in love">
+                                <div class="three">
+                                    <img :src="item.imgurl" alt="">
+                                    <div class="txt">{{item.score}}</div>
+                                </div>
+                                <div class="text1">{{item.name}}</div>
+                                <div class="text2">{{item.text}}</div>
+                            </div>
+                        </div>
+                     </div>
+                     <div class="tab">
+                        <div class="first">
+                            <div class="two" v-for="(item,index) in crime">
+                                <div class="three">
+                                    <img :src="item.imgurl" alt="">
+                                    <div class="txt">{{item.score}}</div>
+                                </div>
+                                <div class="text1">{{item.name}}</div>
+                                <div class="text2">{{item.text}}</div>
+                            </div>
+                        </div>
+                     </div>
+                     <div class="tab">
+                        <div class="first">
+                            <div class="two" v-for="(item,index) in terror">
+                                <div class="three">
+                                    <img :src="item.imgurl" alt="">
+                                    <div class="txt">{{item.score}}</div>
+                                </div>
+                                <div class="text1">{{item.name}}</div>
+                                <div class="text2">{{item.text}}</div>
+                            </div>
+                        </div>
+                     </div>
+                     <div class="tab">
+                        <div class="first">
+                            <div class="two" v-for="(item,index) in comedy">
+                                <div class="three">
+                                    <img :src="item.imgurl" alt="">
+                                    <div class="txt">{{item.score}}</div>
+                                </div>
+                                <div class="text1">{{item.name}}</div>
+                                <div class="text2">{{item.text}}</div>
+                            </div>
+                        </div>
+                     </div>
+                     <div class="tab">
+                        <div class="first">
+                            <div class="two" v-for="(item,index) in action">
+                                <div class="three">
+                                    <img :src="item.imgurl" alt="">
+                                    <div class="txt">{{item.score}}</div>
+                                </div>
+                                <div class="text1">{{item.name}}</div>
+                                <div class="text2">{{item.text}}</div>
+                            </div>
+                        </div>
+                     </div>
+                </div>
+            </div>
+
+
+            <!-- ####   热门电影栏 -->
 			<div class="movie">
-				<!-- <div class="movie1"></div> -->
 				<div class="rot">
 					<img src="./logo2.png">
 					<h3 href="#">热门电影</h3>
 				</div>
 				<div class="first">
+                    <!-- ####   v-for  绑定  vue.js -- data 里面的 list -->
+                    <!-- ####   通过 list 里面的数据进行页面渲染，显示图片 -->
+                    <!-- ####   利用 item ，index 去遍历 list 列表，取出想要的数据 -->
 					<div class="two" v-for="(item,index) in list">
 						<div class="three">
 							<img :src="item.imgurl" alt="">
+                            <!-- ####   遍历 list 里面的 score 的值进行输出 -->
+							<div class="txt">{{item.score}}</div>
 						</div>
+                        <!-- ####   同上描述   -->
 						<div class="text1">{{item.name}}</div>
 						<div class="text2">{{item.text}}</div>
 					</div>
 				</div>
 			</div>
-			<div class="itemize">
-				<div class="item">
-					<img src="./logo3.png">
-					<h3 href="#">电影分类:</h3>
-				</div>
-				<div id="nav">
-					<ul>
-						<li id="nav1" class="act">爱情片</li>
-						<li id="nav1">犯罪片</li>
-						<li id="nav1">惊悚片</li>
-						<li id="nav1">喜剧片</li>
-						<li id="nav1">动作片</li>
-					</ul>
-				</div>
-				<div id="container">
-					 <div class="tab">
-					 	<div class="first">
-							<div class="two" v-for="(item,index) in love">
-								<div class="three">
-									<img :src="item.imgurl" alt="">
-								</div>
-								<div class="text1">{{item.name}}</div>
-								<div class="text2">{{item.text}}</div>
-							</div>
-						</div>
-					 </div>
-					 <div class="tab">
-					 	<div class="first">
-							<div class="two" v-for="(item,index) in crime">
-								<div class="three">
-									<img :src="item.imgurl" alt="">
-								</div>
-								<div class="text1">{{item.name}}</div>
-								<div class="text2">{{item.text}}</div>
-							</div>
-						</div>
-					 </div>
-					 <div class="tab">
-					 	<div class="first">
-							<div class="two" v-for="(item,index) in terror">
-								<div class="three">
-									<img :src="item.imgurl" alt="">
-								</div>
-								<div class="text1">{{item.name}}</div>
-								<div class="text2">{{item.text}}</div>
-							</div>
-						</div>
-					 </div>
-					 <div class="tab">
-					 	<div class="first">
-							<div class="two" v-for="(item,index) in comedy">
-								<div class="three">
-									<img :src="item.imgurl" alt="">
-								</div>
-								<div class="text1">{{item.name}}</div>
-								<div class="text2">{{item.text}}</div>
-							</div>
-						</div>
-					 </div>
-					 <div class="tab">
-					 	<div class="first">
-							<div class="two" v-for="(item,index) in action">
-								<div class="three">
-									<img :src="item.imgurl" alt="">
-								</div>
-								<div class="text1">{{item.name}}</div>
-								<div class="text2">{{item.text}}</div>
-							</div>
-						</div>
-					 </div>
-				</div>
+
+
+			<!-- ####   尾部导航栏 -->
+			<div class="tainer">
+    			<p>
+		            <a href="#">首页</a>&nbsp;|&nbsp; 
+		            <a href="#">关于我们</a>&nbsp;|&nbsp; 
+		            <a href="#">联系我们</a>&nbsp;|&nbsp; 
+		            <a href="#">广告合作</a>&nbsp;|&nbsp; 
+		            <a href="#">帮助与反馈</a>&nbsp;|&nbsp; 
+	        	</p>
 			</div>
-            <marquee>
-                <h2 style="margin-bottom: 100px;color: skyblue">欢迎大猪蹄访问本网站，我将为你提供最优质的服务~</h2>
-            </marquee>
+			<div class="tail">
+	          <p align="center" class="tail1">免责声明：若本站收录的资源侵犯了您的权益，请发邮件至：helly1525@163.com，我们会及时删除侵权内容，谢谢合作！</p>
+	          <p align="center" class="tali2">Copyright © 2020-2022 www.cainiaoys.com. 版权所有.</p>
+	        </div>
+	        
+
 		</div>
 	</body>
 </html>
+<script src="./vue.js"></script>
+<script src="swiper-bundle.min.js"></script>
 <script type="text/javascript">
 	new Vue({
         el:'#movies',
         data:{
             list:[{
                 name:'沐浴之王',
-                imgurl:'./1.jpg',
-                text:'彭昱畅乔杉竟靠搓澡逆袭！'
+                imgurl:'./title/1.jpg',
+                text:'彭昱畅乔杉竟靠搓澡逆袭！',
+                score:'8.3'
             },{
                 name:'姜子牙',
-                imgurl:'./2.jpg',
-                text:'姜子牙大战九尾妖狐'
+                imgurl:'./title/2.jpg',
+                text:'姜子牙大战九尾妖狐',
+                score:'7.7'
             },{
                 name:'八佰',
-                imgurl:'./3.jpg',
-                text:'八百战士血战日军'
+                imgurl:'./title/3.jpg',
+                text:'八百战士血战日军',
+                score:'8.7'
             },{
                 name:'送你一朵小红花',
-                imgurl:'./5.jpg',
-                text:'千玺高亚麟父子畅聊幕后'
+                imgurl:'./title/5.jpg',
+                text:'千玺高亚麟父子畅聊幕后',
+                score:'7.6'
             },{
                 name:'唐仁街探案3',
-                imgurl:'./9.jpg',
-                text:'唐人日本探案搞笑再升级'
+                imgurl:'./title/9.jpg',
+                text:'唐人日本探案搞笑再升级',
+                score:'7.6'
             },{
                 name:'绝对忠诚之国家利益',
-                imgurl:'./8.jpg',
-                text:'惊雷小组跨国追查幕后黑手'
+                imgurl:'./title/8.jpg',
+                text:'惊雷小组跨国追查幕后黑手',
+                score:'8.2'
             },{
                 name:'天堂的张望',
-                imgurl:'./4.jpg',
-                text:'张望与父亲共同对抗命运'
+                imgurl:'./title/4.jpg',
+                text:'张望与父亲共同对抗命运',
+                score:'7.6'
             },{
                 name:'寻龙秘境',
-                imgurl:'./7.jpg',
-                text:'摸金校尉秘境探险再升级'
+                imgurl:'./title/7.jpg',
+                text:'摸金校尉秘境探险再升级',
+                score:'7.7'
             },{
                 name:'哪吒之魔童降世',
-                imgurl:'./11.jpg',
-                text:'哪吒：“我命由我不由天”'
+                imgurl:'./title/11.jpg',
+                text:'哪吒：“我命由我不由天”',
+                score:'9.4'
             },{
                 name:'白蛇：缘起',
-                imgurl:'./12.jpg',
-                text:'东方极致唯美白蛇传'
+                imgurl:'./title/12.jpg',
+                text:'东方极致唯美白蛇传',
+                score:'8.8'
             },{
                 name:'流浪地球',
-                imgurl:'./13.jpg',
-                text:'太阳毁灭,带地球寻找新家...'
+                imgurl:'./title/13.jpg',
+                text:'太阳毁灭,带地球寻找新家...',
+                score:'8.8'
             },{
                 name:'中国机长',
-                imgurl:'./14.jpg',
-                text:'生死关头,英雄机组力挽狂澜...'
+                imgurl:'./title/14.jpg',
+                text:'生死关头,英雄机组力挽狂澜...',
+                score:'8.3'
             }],
             love:[{
                 name:'夏洛特烦恼',
                 imgurl:'./love/1.jpg',
-                text:'主演：沈腾 马丽 尹正 王...'
+                text:'主演：沈腾 马丽 尹正 王...',
+                score:'8.7'
             },{
                 name:'美人鱼',
                 imgurl:'./love/2.jpg',
-                text:'主演：邓超 罗志祥 张雨...'
+                text:'主演：邓超 罗志祥 张雨...',
+                score:'8.3'
             },{
                 name:'喜宝',
                 imgurl:'./love/3.jpg',
-                text:'主演：郭采洁 张国柱 高...'
+                text:'主演：郭采洁 张国柱 高...',
+                score:'7.6'
             },{
                 name:'青禾男高',
                 imgurl:'./love/4.jpg',
-                text:'主演：景甜 欧豪 黑木...'
+                text:'主演：景甜 欧豪 黑木明...',
+                score:'6.8'
             },{
                 name:'羞羞的铁拳',
                 imgurl:'./love/5.jpg',
-                text:'主演：艾伦 马丽 沈腾...'
+                text:'主演：艾伦 马丽 沈腾 宋...',
+                score:'8.3'
             },{
                 name:'恶棍天使',
                 imgurl:'./love/6.jpg',
-                text:'主演：邓超 孙俪 代乐...'
+                text:'主演：邓超 孙俪 代乐乐...',
+                score:'6.9'
             },{
                 name:'前任3：再见前任',
                 imgurl:'./love/7.jpg',
-                text:'主演：韩庚 郑恺 于文...'
+                text:'主演：韩庚 郑恺 于文文...',
+                score:'7.6'
             },{
                 name:'从你的全世界路过',
                 imgurl:'./love/8.jpg',
-                text:'主演：邓超 白百何 杨洋...'
+                text:'主演：邓超 白百何 杨洋...',
+                score:'7.4'
             },{
                 name:'港囧',
                 imgurl:'./love/9.jpg',
-                text:'主演：徐峥 赵薇 包贝...'
+                text:'主演：徐峥 赵薇 包贝尔...',
+                score:'7.7'
             },{
                 name:'少年的你',
                 imgurl:'./love/10.jpg',
-                text:'主演：周冬雨 易烊千玺...'
+                text:'主演：周冬雨 易烊千玺...',
+                score:'8.4'
+            },{
+                name:'情圣',
+                imgurl:'./love/11.jpg',
+                text:'主演：肖央 闫妮...',
+                score:'7.9'
+            },{
+                name:'心花路放',
+                imgurl:'./Love/12.jpg',
+                text:'主演：黄渤 徐峥 袁泉...',
+                score:'8.4'
+            },{
+                name:'人鱼缚',
+                imgurl:'./love/13.jpg',
+                text:'主演：张予曦 朱梓骁...',
+                score:'9.2'
+            },{
+                name:'七月与安生',
+                imgurl:'./love/14.jpg',
+                text:'主演：周冬雨 马思纯...',
+                score:'8.6'
+            },{
+                name:'满城尽带黄金甲',
+                imgurl:'./Love/15.jpg',
+                text:'主演：周润发 周杰伦...',
+                score:'7.5'
             }],
             crime:[{
                 name:'生死下一秒',
                 imgurl:'./crime/1.jpg',
-                text:'主演：于震 辛月 张译...'
+                text:'主演：于震 辛月 张译文...',
+                score:'7.6'
             },{
                 name:'无双',
                 imgurl:'./crime/2.jpg',
-                text:'主演：周润发 郭富城...'
+                text:'主演：周润发 郭富城...',
+                score:'9.0'
             },{
                 name:'风声',
                 imgurl:'./crime/3.jpg',
-                text:'主演：周迅 李冰冰...'
+                text:'主演：周迅 李冰冰...',
+                score:'9.0'
             },{
                 name:'唐人街探案2',
                 imgurl:'./crime/4.jpg',
-                text:'主演：王宝强 刘昊然 肖央...'
+                text:'主演：王宝强 刘昊然 肖央...',
+                score:'8.4'
             },{
                 name:'老炮儿',
                 imgurl:'./crime/5.jpg',
-                text:'主演：冯小刚 李易峰...'
+                text:'主演：冯小刚 李易峰...',
+                score:'8.7'
             },{
                 name:'天下无贼',
                 imgurl:'./crime/6.jpg',
-                text:'主演：刘德华 葛优 王宝强...'
+                text:'主演：刘德华 葛优 王宝强...',
+                score:'8.7'
             },{
                 name:'扫毒2天地对决',
                 imgurl:'./crime/7.jpg',
-                text:'主演：刘德华 古天乐...'
+                text:'主演：刘德华 古天乐...',
+                score:'7.9'
             },{
                 name:'心理罪之城市之光',
                 imgurl:'./crime/8.jpg',
-                text:'主演：邓超 阮经天 刘诗诗...'
+                text:'主演：邓超 阮经天 刘诗诗...',
+                score:'7.7'
             },{
                 name:'使徒行者2：谍影行动',
                 imgurl:'./crime/9.jpg',
-                text:'主演：张家辉 古天乐...'
+                text:'主演：张家辉 古天乐...',
+                score:'8.0'
             },{
                 name:'湄公河行动',
                 imgurl:'./crime/10.jpg',
-                text:'主演：张涵予 彭于晏 ...'
+                text:'主演：张涵予 彭于晏 ...',
+                score:'8.9'
+            },{
+                name:'全民目击',
+                imgurl:'./crime/11.jpg',
+                text:'主演：孙红雷 郭富城...',
+                score:'8.6'
+            },{
+                name:'幕后玩家',
+                imgurl:'./crime/12.jpg',
+                text:'主演：徐峥 王丽坤...',
+                score:'7.6'
+            },{
+                name:'追凶十九年',
+                imgurl:'./crime/13.jpg',
+                text:'主演：王泷正 宋宁峰...',
+                score:'8.2'
+            },{
+                name:'边境风云',
+                imgurl:'./crime/14.jpg',
+                text:'主演：孙红雷 王珞丹...',
+                score:'8.7'
+            },{
+                name:'疯狂的石头',
+                imgurl:'./crime/15.jpg',
+                text:'主演：郭涛 黄渤 徐峥...',
+                score:'9.0'
             }],
             comedy:[{
                 name:'熊出没之夺宝熊兵',
                 imgurl:'./comedy/1.jpg',
-                text:'熊兵之势力挽狂澜'
+                text:'熊兵之势力挽狂澜',
+                score:'8.3'
             },{
                 name:'情况不妙',
                 imgurl:'./comedy/2.jpg',
-                text:'主演：马丽 周韦彤 曹云金...'
+                text:'主演：马丽 周韦彤 曹云金...',
+                score:'8.1'
             },{
                 name:'西游·降魔篇',
                 imgurl:'./comedy/3.jpg',
-                text:'主演：文章 舒淇 黄渤...'
+                text:'主演：文章 舒淇 黄渤...',
+                score:'8.5'
             },{
                 name:'无名之辈',
                 imgurl:'./comedy/4.jpg',
-                text:'主演：陈建斌 任素汐 章宇...'
+                text:'主演：陈建斌 任素汐 章宇...',
+                score:'8.9'
             },{
                 name:'西虹市首富',
                 imgurl:'./comedy/5.jpg',
-                text:'主演：沈腾 宋芸桦 张晨光...'
+                text:'主演：沈腾 宋芸桦 张晨光...',
+                score:'8.2'
             },{
                 name:'我说的都是真的',
                 imgurl:'./comedy/6.jpg',
-                text:'主演：刘仪伟 小沈阳...'
+                text:'主演：刘仪伟 小沈阳...',
+                score:'7.3'
             },{
                 name:'西游记之大圣归来',
                 imgurl:'./comedy/7.jpg',
-                text:'大圣脱胎换骨惊艳四方'
+                text:'大圣脱胎换骨惊艳四方',
+                score:'9.0'
             },{
                 name:'我不是药神',
                 imgurl:'./comedy/8.jpg',
-                text:'主演：徐峥 王传君 周一围...'
+                text:'主演：徐峥 王传君 周一围...',
+                score:'9.4'
             },{
                 name:'飞驰人生',
                 imgurl:'./comedy/9.jpg',
-                text:'主演：沈腾 黄景瑜 尹正...'
+                text:'主演：沈腾 黄景瑜 尹正...',
+                score:'8.3'
             },{
                 name:'一出好戏',
                 imgurl:'./comedy/10.jpg',
-                text:'主演：黄渤 舒淇 王宝强...'
+                text:'主演：黄渤 舒淇 王宝强...',
+                score:'8.4'
+            },{
+                name:'赤狐书生',
+                imgurl:'./comedy/11.jpg',
+                text:'主演：陈立农 李现...',
+                score:'7.7'
+            },{
+                name:'缝纫机乐队',
+                imgurl:'./comedy/12.jpg',
+                text:'主演：大鹏 乔杉 古力...',
+                score:'8.2'
+            },{
+                name:'夜·店',
+                imgurl:'./comedy/13.jpg',
+                text:'主演：徐峥 李小璐...',
+                score:'8.2'
+            },{
+                name:'美食大冒险之英雄烩',
+                imgurl:'./comedy/14.jpg',
+                text:'“寿气包”CP闯荡江湖',
+                score:'8.7'
+            },{
+                name:'人再囧途之泰囧',
+                imgurl:'./comedy/15.jpg',
+                text:'主演：徐峥 王宝强 黄渤...',
+                score:'8.5'
             }],
             action:[{
                 name:'金刚川',
                 imgurl:'./action/1.jpg',
-                text:'主演：张译 吴京 李九霄...'
+                text:'主演：张译 吴京 李九霄...',
+                score:'7.8'
             },{
                 name:'战狼',
                 imgurl:'./action/2.jpg',
-                text:'主演：吴京 余男 斯科特...'
+                text:'主演：吴京 余男 斯科特...',
+                score:'8.3'
             },{
                 name:'昆仑神宫',
                 imgurl:'./action/3.jpg',
-                text:'主演：王泷正 王姿允...'
+                text:'主演：王泷正 王姿允...',
+                score:'8.0'
             },{
                 name:'鬼吹灯之寻龙诀',
                 imgurl:'./action/4.jpg',
-                text:'主演：陈坤 黄渤 舒淇...'
+                text:'主演：陈坤 黄渤 舒淇...',
+                score:'8.7'
             },{
                 name:'狄仁杰之四大天王',
                 imgurl:'./action/5.jpg',
-                text:'主演：赵又廷 冯绍峰...'
+                text:'主演：赵又廷 冯绍峰...',
+                score:'8.0'
             },{
                 name:'红海行动',
                 imgurl:'./action/6.jpg',
-                text:'主演：张译 黄景瑜 海清...'
+                text:'主演：张译 黄景瑜 海清...',
+                score:'9.1'
             },{
                 name:'邪不压正',
                 imgurl:'./action/7.jpg',
-                text:'主演：姜文 彭于晏 廖凡...'
+                text:'主演：姜文 彭于晏 廖凡...',
+                score:'8.4'
             },{
                 name:'一步之遥',
                 imgurl:'./action/8.jpg',
-                text:'主演：姜文 舒淇 葛优...'
+                text:'主演：姜文 舒淇 葛优...',
+                score:'8.0'
             },{
                 name:'“大”人物',
                 imgurl:'./action/9.jpg',
-                text:'主演：王千源 包贝尔...'
+                text:'主演：王千源 包贝尔...',
+                score:'8.1'
             },{
                 name:'动物世界',
                 imgurl:'./action/10.jpg',
-                text:'主演：李易峰 周冬雨 迈...'
+                text:'主演：李易峰 周冬雨 迈...',
+                score:'8.4'
+            },{
+                name:'解救吾先生',
+                imgurl:'./action/11.jpg',
+                text:'主演：刘德华 刘烨 王千源...',
+                score:'8.7'
+            },{
+                name:'破·局',
+                imgurl:'./action/12.jpg',
+                text:'主演：郭富城 王千源...',
+                score:'7.8'
+            },{
+                name:'火锅英雄',
+                imgurl:'./action/13.jpg',
+                text:'主演：陈坤 白百何 秦昊...',
+                score:'8.4'
+            },{
+                name:'疯狂的赛车',
+                imgurl:'./action/14.jpg',
+                text:'“主演：黄渤 戎祥 徐峥...',
+                score:'8.8'
+            },{
+                name:'捍战2',
+                imgurl:'./action/15.jpg',
+                text:'主演：谢云鹏 王雨甜...',
+                score:'8.0'
             }],
             terror:[{
                 name:'画皮2',
                 imgurl:'./terror/1.jpg',
-                text:'主演：周迅 赵薇 陈坤...'
+                text:'主演：周迅 赵薇 陈坤...',
+                score:'7.8'
             },{
                 name:'古窑迷踪',
                 imgurl:'./terror/2.jpg',
-                text:'主演：郭雪芙 罗彬...'
+                text:'主演：郭雪芙 罗彬...',
+                score:'7.5'
             },{
                 name:'夺命巨鳄',
                 imgurl:'./terror/3.jpg',
-                text:'主演：夏胧 刘羽中...'
+                text:'主演：夏胧 刘羽中...',
+                score:'7.7'
             },{
                 name:'笔仙惊魂3',
                 imgurl:'./terror/4.jpg',
-                text:'主演：余心恬 郭艳...'
+                text:'主演：余心恬 郭艳...',
+                score:'6.4'
             },{
                 name:'催眠大师',
                 imgurl:'./terror/5.jpg',
-                text:'主演：徐峥 莫文蔚'
+                text:'主演：徐峥 莫文蔚',
+                score:'8.6'
             },{
                 name:'墓穴迷城',
                 imgurl:'./terror/6.jpg',
-                text:'主演：吕聿来 谢君豪...'
+                text:'主演：吕聿来 谢君豪...',
+                score:'7.0'
             },{
                 name:'怪物',
                 imgurl:'./terror/7.jpg',
-                text:'主演：林嘉欣 舒淇...'
+                text:'主演：林嘉欣 舒淇...',
+                score:'7.9'
             },{
                 name:'记忆大师',
                 imgurl:'./terror/8.jpg',
-                text:'主演：黄渤 徐静蕾...'
+                text:'主演：黄渤 徐静蕾...',
+                score:'8.3'
             },{
                 name:'倩女幽魂',
                 imgurl:'./terror/9.jpg',
-                text:'主演：刘亦菲 古天乐...'
+                text:'主演：刘亦菲 古天乐...',
+                score:'7.4'
             },{
                 name:'少女宿舍',
                 imgurl:'./terror/10.jpg',
-                text:'主演：陈淋 曹越 田启文...'
+                text:'主演：陈淋 曹越 田启文...',
+                score:'7.4'
+            },{
+                name:'海大鱼',
+                imgurl:'./terror/11.jpg',
+                text:'主演：张予曦 韩栋 贾征宇...',
+                score:'8.2'
+            },{
+                name:'惊门',
+                imgurl:'./terror/12.jpg',
+                text:'主演：王子子 彭敬慈 佟月...',
+                score:'6.3'
+            },{
+                name:'捉迷藏',
+                imgurl:'./terror/13.jpg',
+                text:'主演：霍建华 秦海璐 万茜...',
+                score:'7.4'
+            },{
+                name:'猫脸老太太',
+                imgurl:'./terror/14.jpg',
+                text:'主演：王翀 王聃葳 田淼...',
+                score:'7.2'
+            },{
+                name:'反噬',
+                imgurl:'./terror/15.jpg',
+                text:'主演：刘奕凯 陈实秋...',
+                score:'7.4'
             }]
         }
 	})
+
+
+    // <!-- ####   js 选项卡 -->
 	window.onload=function () {
 	var nav=document.getElementById('nav');
 	var oNav=nav.getElementsByTagName('li');
@@ -411,5 +643,23 @@
 			oDiv[m].style.display="none";
 		}
 	}
+
+    // <!-- ####   轮播图 -->
+    var swiper = new Swiper('.swiper-container', {
+      effect: 'coverflow',
+      grabCursor: true,
+      centeredSlides: true,
+      slidesPerView: 'auto',
+      coverflowEffect: {
+        rotate: 50,
+        stretch: 0,
+        depth: 100,
+        modifier: 1,
+        slideShadows: true,
+      },
+      pagination: {
+        el: '.swiper-pagination',
+      },
+    });
 	};
 </script>
